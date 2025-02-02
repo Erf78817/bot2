@@ -294,7 +294,6 @@ def schedule_tasks():
                     logging.error(f"خطا در زمان‌بندی نماز {prayer_names[prayer]}: {e}")
 
                 # زمان‌بندی اطلاع‌رسانی نیم ساعت قبل از نماز
-               
                 reminder_time = (datetime.strptime(time, "%H:%M:%S") - timedelta(minutes=30)).strftime("%H:%M:%S")
                 schedule.every().day.at(reminder_time).do(
                     send_reminder_notification,
@@ -339,6 +338,10 @@ def schedule_tasks():
         # زمان‌بندی ارسال آیه تصادفی
         schedule.every().day.at("08:00").do(random_quranic_verse)
         logging.info("زمان‌بندی ارسال آیه تصادفی تنظیم شد.")
+
+        # زمان‌بندی ارسال پیام هر 15 دقیقه برای جلوگیری از غیرفعال شدن
+        schedule.every(15).minutes.do(send_message, "🤖 ربات فعال است و به کار خود ادامه می‌دهد! 🌟")
+        logging.info("زمان‌بندی ارسال پیام هر 15 دقیقه تنظیم شد.")
 
     except Exception as e:
         logging.error(f"خطا در زمان‌بندی وظایف: {e}")
