@@ -19,7 +19,7 @@ base_url = f"https://eitaayar.ir/api/{token}"
 # مسیر فایل JSON اوقات شرعی (با مسیر نسبی)
 base_dir = os.path.dirname(os.path.abspath(__file__))  # مسیر دایرکتوری فعلی (پوشه‌ی پروژه)
 prayer_times_file = os.path.join(base_dir, "data", "20.json")  # مسیر فایل JSON
-START_DAY = 318  # روز شروع
+START_DAY = 320  # روز شروع
 
 # مسیر پوشه‌ی audio_files (با مسیر نسبی)
 audio_files_path = os.path.join(base_dir, "audio_files")
